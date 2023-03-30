@@ -1,0 +1,30 @@
+def hitungSatu(arr, left, right):
+    if left == right:
+        return arr[left]
+
+    mid = (left + right) // 2
+
+    kiri = hitungSatu(arr, left, mid)
+    kanan = hitungSatu(arr, mid+1, right)
+
+    lmax = 0
+    jum = 0
+    for i in range(mid, left-1, -1):
+        jum += arr[i]
+        lmax = max(lmax, jum)
+
+    rmax = 0
+    jum = 0
+    for i in range(mid+1, right+1):
+        jum += arr[i]
+        rmax = max(rmax, jum)
+
+    tengah = lmax + rmax
+
+    return max(kiri, kanan, tengah)
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+
+    print(hitungSatu(arr, 0, n-1))
