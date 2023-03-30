@@ -1,0 +1,15 @@
+def kerajaanAngka(array_a, array_b):
+    gabung_array = sorted(array_a + array_b)
+    n = len(gabung_array)
+    
+    if n % 2 == 0:
+        return round((gabung_array[n // 2 - 1] + gabung_array[n // 2]) / 2, 1)
+    else:
+        return gabung_array[n // 2]
+
+array_a = list(map(float, input().split()))
+array_b = list(map(float, input().split()))
+
+median = kerajaanAngka(array_a, array_b)
+
+print(format(median))
