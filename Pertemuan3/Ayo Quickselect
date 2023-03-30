@@ -1,0 +1,22 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import random
+
+def quickselect(arr, x):
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        pivot = random.choice(arr)
+        smaller = [i for i in arr if i < pivot]
+        larger = [i for i in arr if i > pivot]
+        equal = [i for i in arr if i == pivot]
+        if x <= len(smaller):
+            return quickselect(smaller, x)
+        elif x > len(smaller) + len(equal):
+            return quickselect(larger, x - len(smaller) - len(equal))
+        else:
+            return pivot
+
+n, x = map(int, input().split())
+arr = list(map(int, input().split()))
+
+print(quickselect(arr, x))
