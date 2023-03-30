@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Pola {
+    public static void pola(String N, String M) {
+        int x = N.length();
+        int y = M.length();
+        int count = 0;
+        List<int[]> index = new ArrayList<int[]>();
+        for (int k = 0; k <= x - y; k++) {
+            if (N.substring(k, k + y).equals(M)) {
+                count++;
+                int[] idx = new int[]{k, k + y - 1};
+                index.add(idx);
+            }
+        }
+        if (count == 0) {
+            System.out.println(0);
+        } else {
+            System.out.println(count);
+            for (int k = 0; k < index.size(); k++) {
+                int[] idx = index.get(k);
+                System.out.print("(" + idx[0] + ", " + idx[1] + ")");
+                if (k != index.size()-1) {
+                    System.out.print(",");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        String N = sc.nextLine().trim();
+        String M = sc.nextLine().trim();
+        pola(N, M);
+    }
+}
