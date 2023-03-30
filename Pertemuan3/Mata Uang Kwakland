@@ -1,0 +1,17 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+N = int(input())
+coins = list(map(int, input().split()))
+X = int(input())
+
+coins.sort(reverse=True)
+result = []
+
+for i in range(N):
+    while X >= coins[i]:
+        X -= coins[i]
+        result.append(coins[i])
+
+print(len(result))
+for coin in result:
+    print(coin, end=" ")
+print()
