@@ -1,0 +1,27 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def koin_palsu(coins):
+    n = len(coins)
+    if n == 1:
+        return coins[0]
+    elif n % 2 == 0:
+        mid = n // 2
+        left_sum = sum(coins[:mid])
+        right_sum = sum(coins[mid:])
+        if left_sum < right_sum:
+            return koin_palsu(coins[:mid])
+        else:
+            return koin_palsu(coins[mid:])
+    else:
+        mid = n // 2
+        left_sum = sum(coins[:mid]) + max(coins[:mid])
+        right_sum = sum(coins[mid:])
+        if left_sum < right_sum:
+            return koin_palsu(coins[:mid])
+        else:
+            return koin_palsu(coins[mid:])
+
+coin = list(map(int, input().split()))
+palsu = koin_palsu(coin)
+for k in range(len(coin)):
+    if coin[k] == palsu:
+        print(k + 1)
