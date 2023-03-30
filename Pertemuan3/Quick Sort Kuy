@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+void quicksort(int arr[], int n) {
+    if (n <= 1) {
+        return;
+    }
+    int pivot = arr[n-1];
+    int left_arr[n-1];
+    int right_arr[n-1];
+    int left_count = 0;
+    int right_count = 0;
+    for (int i = 0; i < n-1; i++) {
+        if (arr[i] <= pivot) {
+            left_arr[left_count] = arr[i];
+            left_count++;
+        }
+        else {
+            right_arr[right_count] = arr[i];
+            right_count++;
+        }
+    }
+    printf("Pivot: %d\n", pivot);
+    printf("Left arr:");
+    for (int i = 0; i < left_count; i++) {
+        printf(" %d", left_arr[i]);
+    }
+    printf("\n");
+    printf("Right arr:");
+    for (int i = 0; i < right_count; i++) {
+        printf(" %d", right_arr[i]);
+    }
+    printf("\n\n");
+    quicksort(left_arr, left_count);
+    quicksort(right_arr, right_count);
+    int i = 0;
+    for (i = 0; i < left_count; i++) {
+        arr[i] = left_arr[i];
+    }
+    arr[i] = pivot;
+    for (int j = 0; j < right_count; j++) {
+        arr[i+1+j] = right_arr[j];
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    quicksort(arr, n);
+    printf("Final:");
+    for (int i = 0; i < n; i++) {
+        printf(" %d", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
