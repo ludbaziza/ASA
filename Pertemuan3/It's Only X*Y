@@ -1,0 +1,20 @@
+def Kali2(X, Y, n):
+    while n > 1:
+        s = n // 2
+        a = X // (10 ** s)
+        b = X % (10 ** s)
+        c = Y // (10 ** s)
+        d = Y % (10 ** s)
+        
+        ac = Kali2(a, c, s)
+        bd = Kali2(b, d, s)
+        ab_cd = Kali2(a+b, c+d, s)
+        print(ac, ab_cd, bd)
+        return (ac*(10**(2*s))) + ((ab_cd-ac-bd)*(10**s)) + bd
+    else:
+        return X * Y
+
+X = int(input())
+Y = int(input())
+n = min(len(str(X)), len(str(Y)))
+print(Kali2(X, Y, n))
