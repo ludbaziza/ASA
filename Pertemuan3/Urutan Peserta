@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+
+import java.util.*;
+
+public class Solution {
+    public static int bubbleSort(int[] arr) {
+        int n = arr.length;
+        int count = 0;
+        boolean swapped = true;
+        while (swapped) {
+            swapped = false;
+            for (int i = 0; i < n - 1; i++) {
+                if (arr[i] > arr[i+1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                    swapped = true;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int[] sortedArr = arr.clone();
+        Arrays.sort(sortedArr);
+        for (int i = 0; i < n; i++) {
+            System.out.print(sortedArr[i] + " ");
+        }
+        System.out.println();
+
+        System.out.println(bubbleSort(arr));
+    }
+}
