@@ -1,0 +1,18 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n, k = map(int, input().split())
+
+def tebak_nilai(left, right):
+    for i in range(k):
+        mid = (left + right) // 2
+        res = input()
+        if res == "ABOVE":
+            left = mid + 1
+        else:
+            right = mid
+    if left == right:
+        return left
+    else:
+        return "Tidak ditemukan"
+
+nilai = tebak_nilai(1, n)
+print(nilai)
