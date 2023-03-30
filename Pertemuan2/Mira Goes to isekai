@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int array[100];
+    int beratbarang;
+    int totalbarang;
+
+    scanf("%d", &beratbarang);
+
+    for (int k = 0; k < beratbarang; k++) {
+        scanf("%d", &array[k]);
+    }
+
+    totalbarang = 0;
+    for (int k = 0; k < beratbarang; k++) {
+        totalbarang = totalbarang + array[k];
+    }
+
+    printf("%d", totalbarang);
+
+    return 0;
+}
