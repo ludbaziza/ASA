@@ -1,0 +1,29 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+def fibonacci(n, x, y):
+    fibo = []
+    if n <= 0:
+        return fibo
+    elif n == 1:
+        fibo.append(x)
+        return fibo
+    elif n == 2:
+        fibo.append(x)
+        fibo.append(y)
+        return fibo
+    else:
+        fibo.append(x)
+        fibo.append(y)
+        for k in range(2, n):
+            next_fibo = fibo[k-1] + fibo[k-2]
+            fibo.append(next_fibo)
+        return fibo
+
+n = int(input())
+array = list(map(int, input().split()))
+a = array[0]
+b = array[1]
+
+output = fibonacci(n, a, b)
+output_str = ' '.join(str(i) for i in output)
+print(output_str)
