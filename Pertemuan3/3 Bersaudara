@@ -1,0 +1,19 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def bersaudara(array):
+    n = len(array)
+    count = 0
+    kembar_tiga = []
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                if array[i] < array[j] < array[k]:
+                    count += 1
+                    kembar_tiga.append([array[i], array[j], array[k]])
+    print(count)
+    kembar_tiga.sort()
+    for kembar_tiga in kembar_tiga:
+        print(kembar_tiga)
+        
+array = list(map(int, input().split()))
+bersaudara(array)
