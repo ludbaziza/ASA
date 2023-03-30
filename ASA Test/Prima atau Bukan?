@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    int N ;
+    int k ;
+    int p ;
+    
+    p = 0;
+
+    k = 0;
+    scanf("%d", &N);
+
+    if (N < 0){
+        printf("Masukkan Bilangan Integer Harus Positif !");
+    }
+    else{
+        for (k = 2; k<=(sqrt(N));k++){
+            if (N % k == 0){
+            p = 1;
+            break;
+        }
+            }
+        if (p == 0){
+            printf("Prima");
+        }
+        else{
+            printf("Bukan Prima");
+        }
+    }
+    
+    return 0;
+}
