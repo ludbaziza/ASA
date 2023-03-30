@@ -1,0 +1,25 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def koinpalsu(array):
+    n = len(array)
+    mid = n // 2
+    left = array[:mid]
+    right = array[mid:]
+    
+    if (n >= 2):
+        if(len(left) != len(right)):
+            if(sum(left) + max(array) < sum(right)):
+                print(left)
+                koinpalsu(left)
+            else:
+                print(right)
+                koinpalsu(right)
+        else:
+            if(sum(left) < sum(right)):
+                print(left)
+                koinpalsu(left)
+            else:
+                print(right)
+                koinpalsu(right)
+        
+arr = list(map(int, input().split()))
+koinpalsu(arr)
