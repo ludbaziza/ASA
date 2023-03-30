@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+
+int main(){
+    int n, A, B;
+    scanf("%d %d %d", &n, &A, &B);
+    
+    int bin;
+    
+    int merah = A;
+    int hijau = B;
+    
+    while (merah != hijau){
+        if (merah < hijau){
+            merah += A;
+        }else{
+            hijau += B;
+        }
+    }
+    bin = merah/A + hijau/B;
+    
+    printf("%d\n", bin);
+    
+    return 0;
+    
+}
+
