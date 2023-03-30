@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+  
+    int total = 0; 
+    int k = 0;
+    int n;
+    int wadah;
+    
+    scanf("%d", &n);
+
+    int array[n];
+
+    while (k < n) {
+        scanf("%d", &array[k]);
+        wadah = array[k];
+        if (wadah % 2 == 0){
+            total ++;
+        }
+        k++;
+
+    }
+
+    printf("%d", total);
+
+    return 0;
+}
