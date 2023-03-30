@@ -1,0 +1,29 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+array = input().split()
+
+count = {}
+
+for string in array:
+    if string in count:
+        count[string] += 1
+    else:
+        count[string] = 1
+        
+max_count = 0
+suara_terbanyak = ""
+for string, cnt in count.items():
+    if cnt > max_count:
+        max_count = cnt
+        suara_terbanyak = string
+        
+new_array = []
+for string in array:
+    if string == suara_terbanyak:
+        new_array.append(format(string))
+    else:
+        new_array.append(string)
+        
+output = " ".join(new_array)
+
+print(format(suara_terbanyak))
