@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int[] array = new int[n];
+        for(int i = 0; i < n; i++){
+            array[i] = input.nextInt();
+        }
+        int maxSum = array[0];
+        int[] maxSubarray = new int[0];
+        int currentSum = array[0];
+        int currentStart = 0;
+        for(int i = 1; i < n; i++){
+            if (currentSum < 0) {
+                currentSum = array[i];
+                currentStart = i;
+            } else {
+                currentSum += array[i];
+            }
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+                maxSubarray = new int[i-currentStart+1];
+                System.arraycopy(array, currentStart, maxSubarray, 0, i-currentStart+1);
+            }
+        }
+        System.out.println(maxSum);
+        for(int i = 0; i< maxSubarray.length; i++){
+            System.out.print(maxSubarray[i] + " ");
+        }
+    }
+}
