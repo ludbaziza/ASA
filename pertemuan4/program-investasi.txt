@@ -1,0 +1,33 @@
+def select_projects(num_projects, duration, profits):
+    selected_projects = []
+    total_profit = 0
+
+    project_list = list(enumerate(profits, start=1))
+    sorted_projects = sorted(project_list, key=lambda x: x[1], reverse=True)
+
+    for project in sorted_projects:
+        if duration == 0:
+            break
+
+        project_id, profit = project
+        if duration >= 1:
+            selected_projects.append((project_id, profit))
+            total_profit += profit
+            duration -= 1
+
+    return selected_projects, total_profit
+
+# Sample Input
+num_projects = 8
+duration = 9
+profits = [2, 3, 5]
+
+# Panggil fungsi untuk memilih proyek dan menghitung keuntungan
+selected_projects, total_profit = select_projects(num_projects, duration, profits)
+
+# Output
+print("Proyek yang dipilih:")
+for project in selected_projects:
+    project_id, profit = project
+    print(f"Proyek {project_id}: Tingkat keuntungan harian {profit}")
+print("Total keuntungan yang diperoleh:", total_profit)
